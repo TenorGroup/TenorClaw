@@ -1,5 +1,6 @@
 packages:
   - '.'
+approveBuildsFor: '{"@tencent-connect/openclaw-qqbot":"1.6.5","electron-winstaller":"5.4.0"}'
 
 ignoredBuiltDependencies:
   - electron
