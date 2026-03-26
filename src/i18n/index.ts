@@ -39,10 +39,22 @@ import jaSkills from './locales/ja/skills.json';
 import jaCron from './locales/ja/cron.json';
 import jaSetup from './locales/ja/setup.json';
 
+// VI
+import viCommon from './locales/vi/common.json';
+import viSettings from './locales/vi/settings.json';
+import viDashboard from './locales/vi/dashboard.json';
+import viChat from './locales/vi/chat.json';
+import viChannels from './locales/vi/channels.json';
+import viAgents from './locales/vi/agents.json';
+import viSkills from './locales/vi/skills.json';
+import viCron from './locales/vi/cron.json';
+import viSetup from './locales/vi/setup.json';
+
 export const SUPPORTED_LANGUAGES = [
     { code: 'en', label: 'English' },
     { code: 'zh', label: '中文' },
     { code: 'ja', label: '日本語' },
+    { code: 'vi', label: 'Tiếng Việt' },
 ] as const satisfies ReadonlyArray<{ code: LanguageCode; label: string }>;
 
 const resources = {
@@ -78,6 +90,17 @@ const resources = {
         skills: jaSkills,
         cron: jaCron,
         setup: jaSetup,
+    },
+    vi: {
+        common: viCommon,
+        settings: viSettings,
+        dashboard: viDashboard,
+        chat: viChat,
+        channels: viChannels,
+        agents: viAgents,
+        skills: viSkills,
+        cron: viCron,
+        setup: viSetup,
     },
 };
 

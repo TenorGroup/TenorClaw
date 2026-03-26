@@ -1,0 +1,41 @@
+{
+    "gatewayNotRunning": "Gateway chưa chạy",
+    "gatewayRequired": "Gateway OpenClaw cần được chạy để sử dụng trò chuyện. Nó sẽ tự động khởi động, hoặc bạn có thể khởi động từ Cài đặt.",
+    "welcome": {
+        "title": "Trò chuyện TenorClaw",
+        "subtitle": "Tôi có thể giúp gì cho bạn?",
+        "askQuestions": "Xử lý tác vụ",
+        "askQuestionsDesc": "Làm việc với các yêu cầu hướng tác vụ",
+        "creativeTasks": "Thực thi liên tục",
+        "creativeTasksDesc": "Tiếp tục chạy qua các bước công việc",
+        "brainstorming": "Đa Agent song song"
+    },
+    "noLogs": "(Chưa có nhật ký)",
+    "toolbar": {
+        "refresh": "Làm mới trò chuyện",
+        "showThinking": "Hiện suy nghĩ",
+        "hideThinking": "Ẩn suy nghĩ",
+        "currentAgent": "Đang trò chuyện với {{agent}}"
+    },
+    "composer": {
+        "attachFiles": "Đính kèm tệp",
+        "pickAgent": "Chọn agent",
+        "clearTarget": "Xóa agent đích",
+        "targetChip": "@{{agent}}",
+        "agentPickerTitle": "Chuyển tin nhắn tiếp theo đến agent khác",
+        "gatewayDisconnectedPlaceholder": "Gateway chưa kết nối...",
+        "send": "Gửi",
+        "stop": "Dừng",
+        "gatewayConnected": "đã kết nối",
+        "gatewayStatus": "gateway {{state}} | cổng: {{port}} {{pid}}",
+        "retryFailedAttachments": "Thử lại tệp đính kèm thất bại"
+    },
+    "historyBuckets": {
+        "today": "Hôm nay",
+        "yesterday": "Hôm qua",
+        "withinWeek": "Trong 1 tuần",
+        "withinTwoWeeks": "Trong 2 tuần",
+        "withinMonth": "Trong 1 tháng",
+        "older": "Hơn 1 tháng trước"
+    }
+}

@@ -7,14 +7,14 @@
  * Port configuration
  */
 export const PORTS = {
-  /** ClawX GUI development server port */
-  CLAWX_DEV: 5173,
-  
-  /** ClawX GUI production port (for reference) */
-  CLAWX_GUI: 23333,
+  /** TenorClaw GUI development server port */
+  TENORCLAW_DEV: 5173,
+
+  /** TenorClaw GUI production port (for reference) */
+  TENORCLAW_GUI: 23333,
 
   /** Local host API server port */
-  CLAWX_HOST_API: 3210,
+  TENORCLAW_HOST_API: 3210,
   
   /** OpenClaw Gateway port */
   OPENCLAW_GATEWAY: 18789,
@@ -24,7 +24,7 @@ export const PORTS = {
  * Get port from environment or default
  */
 export function getPort(key: keyof typeof PORTS): number {
-  const envKey = `CLAWX_PORT_${key}`;
+  const envKey = `TENORCLAW_PORT_${key}`;
   const envValue = process.env[envKey];
   return envValue ? parseInt(envValue, 10) : PORTS[key];
 }
@@ -36,11 +36,11 @@ export const APP_PATHS = {
   /** OpenClaw configuration directory */
   OPENCLAW_CONFIG: '~/.openclaw',
   
-  /** ClawX configuration directory */
-  CLAWX_CONFIG: '~/.clawx',
-  
+  /** TenorClaw configuration directory */
+  TENORCLAW_CONFIG: '~/.tenorclaw',
+
   /** Log files directory */
-  LOGS: '~/.clawx/logs',
+  LOGS: '~/.tenorclaw/logs',
 } as const;
 
 /**

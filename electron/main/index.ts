@@ -16,7 +16,7 @@ import { warmupNetworkOptimization } from '../utils/uv-env';
 import { initTelemetry } from '../utils/telemetry';
 
 import { ClawHubService } from '../gateway/clawhub';
-import { ensureClawXContext, repairClawXOnlyBootstrapFiles } from '../utils/openclaw-workspace';
+import { ensureTenorClawContext, repairTenorClawOnlyBootstrapFiles } from '../utils/openclaw-workspace';
 import { autoInstallCliIfNeeded, generateCompletionCache, installCompletionToProfile } from '../utils/openclaw-cli';
 import { isQuitting, setQuitting } from './app-state';
 import { applyProxySettings } from './proxy';
@@ -44,7 +44,7 @@ import { browserOAuthManager } from '../utils/browser-oauth';
 import { whatsAppLoginManager } from '../utils/whatsapp-login';
 import { syncAllProviderAuthToRuntime } from '../services/providers/provider-runtime-sync';
 
-const WINDOWS_APP_USER_MODEL_ID = 'app.clawx.desktop';
+const WINDOWS_APP_USER_MODEL_ID = 'app.tenorclaw.desktop';
 
 // Disable GPU hardware acceleration globally for maximum stability across
 // all GPU configurations (no GPU, integrated, discrete).
@@ -63,11 +63,11 @@ const WINDOWS_APP_USER_MODEL_ID = 'app.clawx.desktop';
 app.disableHardwareAcceleration();
 
 // On Linux, set CHROME_DESKTOP so Chromium can find the correct .desktop file.
-// On Wayland this maps the running window to clawx.desktop (→ icon + app grouping);
+// On Wayland this maps the running window to tenorclaw.desktop (→ icon + app grouping);
 // on X11 it supplements the StartupWMClass matching.
 // Must be called before app.whenReady() / before any window is created.
 if (process.platform === 'linux') {
-  app.setDesktopName('clawx.desktop');
+  app.setDesktopName('tenorclaw.desktop');
 }
 
 // Prevent multiple instances of the app from running simultaneously.
@@ -77,7 +77,7 @@ if (process.platform === 'linux') {
 // The losing process must exit immediately so it never reaches Gateway startup.
 const gotElectronLock = app.requestSingleInstanceLock();
 if (!gotElectronLock) {
-  console.info('[ClawX] Another instance already holds the single-instance lock; exiting duplicate process');
+  console.info('[TenorClaw] Another instance already holds the single-instance lock; exiting duplicate process');
   app.exit(0);
 }
 let releaseProcessInstanceFileLock: () => void = () => {};
@@ -86,7 +86,7 @@ if (gotElectronLock) {
   try {
     const fileLock = acquireProcessInstanceFileLock({
       userDataDir: app.getPath('userData'),
-      lockName: 'clawx',
+      lockName: 'tenorclaw',
     });
     gotFileLock = fileLock.acquired;
     releaseProcessInstanceFileLock = fileLock.release;
@@ -97,12 +97,12 @@ if (gotElectronLock) {
           ? 'unknown lock format/content'
           : 'unknown owner';
       console.info(
-        `[ClawX] Another instance already holds process lock (${fileLock.lockPath}, ${ownerDescriptor}); exiting duplicate process`,
+        `[TenorClaw] Another instance already holds process lock (${fileLock.lockPath}, ${ownerDescriptor}); exiting duplicate process`,
       );
       app.exit(0);
     }
   } catch (error) {
-    console.warn('[ClawX] Failed to acquire process instance file lock; continuing with Electron single-instance lock only', error);
+    console.warn('[TenorClaw] Failed to acquire process instance file lock; continuing with Electron single-instance lock only', error);
   }
 }
 const gotTheLock = gotElectronLock && gotFileLock;
@@ -259,7 +259,7 @@ function createMainWindow(): BrowserWindow {
 async function initialize(): Promise<void> {
   // Initialize logger first
   logger.init();
-  logger.info('=== ClawX Application Starting ===');
+  logger.info('=== TenorClaw Application Starting ===');
   logger.debug(
     `Runtime: platform=${process.platform}/${process.arch}, electron=${process.versions.electron}, node=${process.versions.node}, packaged=${app.isPackaged}, pid=${process.pid}, ppid=${process.ppid}`
   );
@@ -322,10 +322,10 @@ async function initialize(): Promise<void> {
   // Note: Auto-check for updates is driven by the renderer (update store init)
   // so it respects the user's "Auto-check for updates" setting.
 
-  // Repair any bootstrap files that only contain ClawX markers (no OpenClaw
-  // template content). This fixes a race condition where ensureClawXContext()
+  // Repair any bootstrap files that only contain TenorClaw markers (no OpenClaw
+  // template content). This fixes a race condition where ensureTenorClawContext()
   // previously created the file before the gateway could seed the full template.
-  void repairClawXOnlyBootstrapFiles().catch((error) => {
+  void repairTenorClawOnlyBootstrapFiles().catch((error) => {
     logger.warn('Failed to repair bootstrap files:', error);
   });
 
@@ -353,8 +353,8 @@ async function initialize(): Promise<void> {
   gatewayManager.on('status', (status: { state: string }) => {
     hostEventBus.emit('gateway:status', status);
     if (status.state === 'running') {
-      void ensureClawXContext().catch((error) => {
-        logger.warn('Failed to re-merge ClawX context after gateway reconnect:', error);
+      void ensureTenorClawContext().catch((error) => {
+        logger.warn('Failed to re-merge TenorClaw context after gateway reconnect:', error);
       });
     }
   });
@@ -439,11 +439,11 @@ async function initialize(): Promise<void> {
     logger.info('Gateway auto-start disabled in settings');
   }
 
-  // Merge ClawX context snippets into the workspace bootstrap files.
+  // Merge TenorClaw context snippets into the workspace bootstrap files.
   // The gateway seeds workspace files asynchronously after its HTTP server
-  // is ready, so ensureClawXContext will retry until the target files appear.
-  void ensureClawXContext().catch((error) => {
-    logger.warn('Failed to merge ClawX context into workspace:', error);
+  // is ready, so ensureTenorClawContext will retry until the target files appear.
+  void ensureTenorClawContext().catch((error) => {
+    logger.warn('Failed to merge TenorClaw context into workspace:', error);
   });
 
   // Auto-install openclaw CLI and shell completions (non-blocking).
@@ -484,7 +484,7 @@ if (gotTheLock) {
 
   // When a second instance is launched, focus the existing window instead.
   app.on('second-instance', () => {
-    logger.info('Second ClawX instance detected; redirecting to the existing window');
+    logger.info('Second TenorClaw instance detected; redirecting to the existing window');
 
     const focusRequest = requestSecondInstanceFocus(
       mainWindowFocusState,

@@ -24,7 +24,7 @@ function getElectronApp() {
     return (require('electron') as typeof import('electron')).app;
   }
 
-  const fallbackUserData = process.env.CLAWX_USER_DATA_DIR?.trim() || join(homedir(), '.clawx');
+  const fallbackUserData = process.env.TENORCLAW_USER_DATA_DIR?.trim() || join(homedir(), '.tenorclaw');
   const fallbackAppPath = process.cwd();
   const fallbackApp: ElectronAppLike = {
     isPackaged: false,
@@ -62,21 +62,21 @@ export function getOpenClawSkillsDir(): string {
 }
 
 /**
- * Get ClawX config directory
+ * Get TenorClaw config directory
  */
-export function getClawXConfigDir(): string {
-  return join(homedir(), '.clawx');
+export function getTenorClawConfigDir(): string {
+  return join(homedir(), '.tenorclaw');
 }
 
 /**
- * Get ClawX logs directory
+ * Get TenorClaw logs directory
  */
 export function getLogsDir(): string {
   return join(getElectronApp().getPath('userData'), 'logs');
 }
 
 /**
- * Get ClawX data directory
+ * Get TenorClaw data directory
  */
 export function getDataDir(): string {
   return getElectronApp().getPath('userData');

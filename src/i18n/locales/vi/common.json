@@ -1,0 +1,59 @@
+{
+    "sidebar": {
+        "chat": "Trò chuyện",
+        "newChat": "Trò chuyện mới",
+        "cronTasks": "Tác vụ Cron",
+        "skills": "Skill",
+        "agents": "Agent",
+        "channels": "Kênh",
+        "dashboard": "Bảng điều khiển",
+        "settings": "Cài đặt",
+        "devConsole": "Bảng điều khiển nhà phát triển",
+        "models": "Mô hình",
+        "deleteSessionConfirm": "Bạn có chắc chắn muốn xóa phiên \"{{label}}\" không?",
+        "openClawPage": "Trang OpenClaw"
+    },
+    "actions": {
+        "save": "Lưu",
+        "cancel": "Hủy",
+        "delete": "Xóa",
+        "edit": "Chỉnh sửa",
+        "refresh": "Làm mới",
+        "close": "Đóng",
+        "copy": "Sao chép",
+        "search": "Tìm kiếm",
+        "confirm": "Xác nhận",
+        "dismiss": "Bỏ qua",
+        "load": "Tải",
+        "install": "Cài đặt",
+        "uninstall": "Gỡ cài đặt",
+        "enable": "Bật",
+        "disable": "Tắt",
+        "back": "Quay lại",
+        "next": "Tiếp theo",
+        "skip": "Bỏ qua",
+        "restart": "Khởi động lại",
+        "show": "Hiện",
+        "hide": "Ẩn",
+        "clear": "Xóa"
+    },
+    "status": {
+        "running": "Đang chạy",
+        "stopped": "Đã dừng",
+        "error": "Lỗi",
+        "connected": "Đã kết nối",
+        "disconnected": "Đã ngắt kết nối",
+        "enabled": "Đã bật",
+        "disabled": "Đã tắt",
+        "active": "Đang hoạt động",
+        "paused": "Đã tạm dừng",
+        "configured": "Đã cấu hình",
+        "loading": "Đang tải...",
+        "saving": "Đang lưu..."
+    },
+    "gateway": {
+        "notRunning": "Gateway chưa chạy",
+        "notRunningDesc": "Gateway OpenClaw cần được chạy để sử dụng tính năng này. Nó sẽ tự động khởi động, hoặc bạn có thể khởi động từ Cài đặt.",
+        "warning": "Gateway chưa chạy."
+    }
+}

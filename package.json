@@ -1,5 +1,5 @@
 {
-    "name": "clawx",
+    "name": "tenorclaw",
     "version": "0.3.1",
     "pnpm": {
         "onlyBuiltDependencies": [
@@ -26,9 +26,9 @@
             ]
         }
     },
-    "description": "ClawX - Graphical AI Assistant based on OpenClaw",
+    "description": "TenorClaw - Graphical AI Assistant by Tenor Group, based on OpenClaw",
     "main": "dist-electron/main/index.js",
-    "author": "ClawX Team",
+    "author": "Tenor Group",
     "license": "MIT",
     "private": true,
     "scripts": {

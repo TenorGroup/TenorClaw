@@ -49,7 +49,7 @@ class ErrorBoundary extends Component<
         <div style={{
           padding: '40px',
           color: '#f87171',
-          background: '#0f172a',
+          background: 'hsl(0 0% 7%)',
           minHeight: '100vh',
           fontFamily: 'monospace'
         }}>
@@ -57,7 +57,7 @@ class ErrorBoundary extends Component<
           <pre style={{
             whiteSpace: 'pre-wrap',
             wordBreak: 'break-all',
-            background: '#1e293b',
+            background: 'hsl(0 0% 10%)',
             padding: '16px',
             borderRadius: '8px',
             fontSize: '14px'
@@ -71,7 +71,7 @@ class ErrorBoundary extends Component<
             style={{
               marginTop: '16px',
               padding: '8px 16px',
-              background: '#3b82f6',
+              background: 'hsl(0 0% 60%)',
               color: 'white',
               border: 'none',
               borderRadius: '6px',
